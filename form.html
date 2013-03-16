@@ -1,11 +1,14 @@
-<form onSubmit="send_post.php" method="post">
-    <h3>Category:</h3>
-    <input type="text" name="post_category">
-    <h3>Post title:</h3>
-    <input type="text" name="post_title">
-    <h3>Post tags (a,b,c...):</h3>
-    <input type="text" name="post_tags">
-    <h3>Post (use html):</h3>
-    <textarea rows="20" cols="50" name="post_contents"></textarea>
-    <input type="submit">
+<!DOCTYPE html>
+<html>
+<body>
+
+<form action="send_to_db.php" method="post">
+  <input type="checkbox" name="cat1" value=true > Academics<br>
+  <input type="checkbox" name="cat2" value=true > Student Life<br>
+  <input type="checkbox" name="cat3" value=true > Other <br>
+
+  <input type="submit" value="Submit">
 </form>
+
+</body>
+</html>
