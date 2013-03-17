@@ -7,6 +7,8 @@ $query="SELECT categories FROM User WHERE name= ".'\''.$username.'\'';
 $categories=mysql_query($query,$con);
 $uni_index=explode(",",$universities); 
 $cat_index=explode(",", $categories);
+
+//need a statement to prevent update from occuring if no change to query contents occurred since last update.
 //-------------------------------------------------------------------------------
 $first=true;
 //var_dump(sizeof($uni_index));
