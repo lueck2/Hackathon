@@ -35,7 +35,6 @@ for($i=0; $i<3; $i++)
 		}
 
 	}
-	var_dump($categories);
 }
 
 var_dump($categories);
@@ -67,10 +66,48 @@ for($i=0; $i<2; $i++)
 		}
 
 	}
-	var_dump($universities);
+	
 }
 
 var_dump($universities);
+
+$uni_index=explode(",",$universities); 
+$cat_index=explode(",", $categories);
+
+$query="SELECT * FROM Events WHERE";
+$first=true;
+var_dump(sizeof($uni_index));
+for($i=0; $i<sizeof($uni_index); $i++)
+{
+	if($first)
+	{	
+		$query.=" school LIKE " . '\'' .$uni_index[$i].'\'';
+		$first=false;
+	}
+	else	
+		$query.=" OR school LIKE ". '\''.$uni_index[$i].'\'';
+}
+var_dump($query);
+
+$query.=" AND (";
+$first=true;
+for($i=0; $i<sizeof($cat_index); $i++)
+{
+	if($first==false)
+		$query.=" OR";
+	var_dump($first);
+	$query.=" categories LIKE  ".'\''.$cat_index[$i]. '\'';
+	$query.=" OR categories LIKE  ".'\''.$cat_index[$i]. ',%\'';
+	$query.=" OR categories LIKE  ".'\'%,'.$cat_index[$i]. ',%\'';
+	$query.=" OR categories LIKE  ".'\'%,'.$cat_index[$i]. '\'';
+	
+	$first=false;
+}
+$query.=")";
+var_dump($query);
+
+
+
 //mysqli_query($connect,"INSERT INTO posts (category, title, contents, tags)
 //VALUES ('$_POST[post_category]', '$_POST[post_title]', '$_POST[post_contents]', '$_POST[post_tags]')";
 ?>
