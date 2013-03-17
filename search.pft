@@ -1,0 +1,9 @@
+//search function on site for specific univiersity feed
+$univ_name=($_GET['Uni_Name']);
+if(preg_match("/^[a-zA-Z]+$/", $univ_name) == 1)
+{
+  //some condition to reset entry
+
+}
+
+$query="SELECT * FROM Schools WHERE name=".'\''.$univ_name.'\''; 
